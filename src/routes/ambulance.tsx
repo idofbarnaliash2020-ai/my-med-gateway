@@ -73,7 +73,7 @@ function AmbulancePage() {
   };
 
   const useLocation = () => {
-    if (!navigator.geolocation) return toast.error("Location is not available in this browser");
+    if (!navigator.geolocation) { toast.error("Location is not available in this browser"); return; }
     navigator.geolocation.getCurrentPosition(
       (p) => set("pickup", `Near ${p.coords.latitude.toFixed(4)}, ${p.coords.longitude.toFixed(4)}`),
       () => toast.error("Location permission denied — please type the address"),
@@ -180,7 +180,7 @@ function AmbulancePage() {
   );
 }
 
-function Summary({ data, hospitalName }: { data: FormData; hospitalName?: string }) {
+function Summary({ data, hospitalName }: { data: FormData; hospitalName?: string | undefined }) {
   const rows = [["Pickup", data.pickup], ["Destination", hospitalName], ["Category", data.category], ["Contact", `${data.name} · ${data.phone}`], ["Notes", data.notes || "—"]];
   return (
     <dl className="divide-y">
