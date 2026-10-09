@@ -20,7 +20,7 @@ export const Route = createFileRoute("/medicines")({
 
 function MedicinesPage() {
   const [q, setQ] = useState("");
-  const [selectedId, setSelectedId] = useState(medicines[0].id);
+  const [selectedId, setSelectedId] = useState(medicines[0]?.id ?? "");
   const loading = useSimulatedLoading([q]);
   const results = useMemo(() => medicines.filter((m) => (m.name + m.salt + m.category).toLowerCase().includes(q.toLowerCase())), [q]);
   const med = results.find((m) => m.id === selectedId) ?? results[0];

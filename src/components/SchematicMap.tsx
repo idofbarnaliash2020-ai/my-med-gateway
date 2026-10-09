@@ -18,7 +18,7 @@ const toneClass: Record<MapPoint["tone"], string> = {
 };
 
 /** Illustrative schematic map (not geographically accurate). */
-export function SchematicMap({ points, activeId, onSelect, className }: { points: MapPoint[]; activeId?: string; onSelect?: (id: string) => void; className?: string }) {
+export function SchematicMap({ points, activeId, onSelect, className }: { points: MapPoint[]; activeId?: string | undefined; onSelect?: (id: string) => void; className?: string }) {
   return (
     <div className={cn("relative overflow-hidden rounded-2xl border bg-accent/50", className)}>
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full text-border">
